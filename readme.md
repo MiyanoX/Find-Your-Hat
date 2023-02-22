@@ -1,5 +1,11 @@
 # Hat Find Game
 
+## Update Schedule
+
+1. Add field generator function with input parameter: height, width and percentage of holes.
+2. Add field validate to check if generated hole is possible to solve
+3. Improve graphic of game by using packages from: <https://github.com/cronvel/terminal-kit>
+
 ## Gettinng start
 
 Package prompt-sync is required. Run below command to install this package:
@@ -23,7 +29,7 @@ node main.js
 - l -> left
 - r -> right
 
-### Icon:
+### Icon
 
 - ^ -> Hat
 - O -> Hole
