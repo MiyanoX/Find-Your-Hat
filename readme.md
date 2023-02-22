@@ -2,8 +2,7 @@
 
 ## Gettinng start
 
-prompt-sync is required.
-Run below command to install this package:
+Package prompt-sync is required. Run below command to install this package:
 
 ```bash
 npn i prompt-sync
@@ -17,7 +16,7 @@ node main.js
 
 ## Tutorial
 
-### Input:
+### Input
 
 - u -> up
 - d -> down
