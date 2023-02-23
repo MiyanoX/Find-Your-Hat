@@ -1,10 +1,8 @@
 # Hat Find Game
 
-## Update Schedule
+## UI Preview
 
-1. Add field generator function with input parameter: height, width and percentage of holes.
-2. Add field validate to check if generated hole is possible to solve
-3. Improve graphic of game by using packages from: <https://github.com/cronvel/terminal-kit>
+<img width="654" alt="Screen Shot 2023-02-23 at 16 44 37" src="https://user-images.githubusercontent.com/62541265/220859532-f3bccd25-bf06-4f97-bf86-c26119e6b19e.png">
 
 ## Gettinng start
 
