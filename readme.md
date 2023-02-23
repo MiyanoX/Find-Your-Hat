@@ -24,10 +24,10 @@ node main.js
 
 ### Input
 
-- u -> up
-- d -> down
-- l -> left
-- r -> right
+- w -> up
+- s -> down
+- a -> left
+- d -> right
 
 ### Icon
 

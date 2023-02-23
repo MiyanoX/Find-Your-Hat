@@ -6,18 +6,52 @@ const fieldCharacter = '░';
 const pathCharacter = '*';
 
 class Field {
-    constructor(initialField) {
-        this._field = initialField;
+    constructor(height=10, weight=10, holePercentage=0.2) {
         this._x = 0;
         this._y = 0;
-        this._xLength = initialField.length[0];
-        this._yLength = initialField.length;
+        this._xLength = weight;
+        this._yLength = height;
         this._win = false;
         this._lose = false;
+        this._field = this.generateField(height, weight,holePercentage);
     }
 
-    generateField() {
-        
+    generateField(height, width, holePercentage) {
+        const field = [];
+        const randomWeight = {
+            [holePercentage]: hole,
+            [1 - holePercentage]: fieldCharacter,
+        }
+        for (let i = 0; i < height; i += 1) {
+            const line = [];
+            for (let j = 0; j < width; j += 1) {
+                var sum = 0;
+                const random = Math.random();
+                for (let weight in randomWeight) {
+                    sum += +weight; // use +weigth to tranform string to number
+                    if (random < sum) {
+                        line.push(randomWeight[weight]);
+                        break;
+                    }
+                }
+            }
+            field.push(line);
+        }
+        const endPoint = this.generatePointInField(field);
+        field[endPoint[1]][endPoint[0]] = hat;
+        const startPoint = this.generatePointInField(field);
+        [this._x, this._y] = startPoint;
+        return field;
+    }
+
+    generatePointInField(field) {
+        let x = -1, y = -1;
+        while (x === -1 || y === -1 || field[y][x] === hole || field[y][x] === hat){
+            const randomX = Math.floor(Math.random() * this._xLength);
+            const randomY = Math.floor(Math.random() * this._yLength);
+            [x, y] = [randomX, randomY]
+        }
+        return [x, y];
     }
 
     gameStart() {
@@ -35,19 +69,19 @@ class Field {
     
     move(str) {
         switch(str) {
-            case 'u': {
+            case 'w': {
                 this._y -= 1;
                 break;
             } 
-            case 'd': {
+            case 's': {
                 this._y += 1;
                 break;
             }
-            case 'l': {
+            case 'a': {
                 this._x -= 1;
                 break;
             }
-            case 'r': {
+            case 'd': {
                 this._x += 1;
                 break;
             }
@@ -103,10 +137,6 @@ class Field {
     }
 }
 
-const newField = new Field(
-    [   ['░', '░', 'O'],
-        ['░', 'O', '░'],
-        ['░', '^', '░'],]
-)
 
-newField.gameStart()
+const myGame = new Field();
+myGame.gameStart()
