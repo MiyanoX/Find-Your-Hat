@@ -1,12 +1,13 @@
 const prompt = require('prompt-sync')({sigint: true});
+const term = require( 'terminal-kit' ).terminal ;
 
-const hat = '^';
-const hole = 'O';
-const fieldCharacter = '░';
-const pathCharacter = '*';
+const hat = '_A_';
+const hole = '( )';
+const fieldCharacter = '   ';
+const pathCharacter = '<*>';
 
 class Field {
-    constructor(height=10, weight=10, holePercentage=0.2) {
+    constructor(height=30, weight=30, holePercentage=0.2) {
         this._x = 0;
         this._y = 0;
         this._xLength = weight;
@@ -119,20 +120,37 @@ class Field {
     }
 
     print() {
-        this._field[this._y][this._x] = pathCharacter;
-        for ( let i = 0; i < this._field.length; i += 1 ) {
-            console.log(...this._field[i]);
+        for (let i = 0; i < 3; i += 1) {
+            console.log('');
         }
+        this._field[this._y][this._x] = pathCharacter;
+        // for ( let i = 0; i < this._field.length; i += 1 ) {
+        //     console.log(...this._field[i]);
+        // }
+        term.table( this._field , {
+            hasBorder: false ,
+            contentHasMarkup: true ,
+            textAttr: { bgColor: 'blue' } , 
+            width: this._xLength * 3,
+            fit: true  // Activate all expand/shrink + wordWrap
+        }
+    ) ;
         this._field[this._y][this._x] = fieldCharacter;
     }
 
     resultPrint() {
         if (this._lose) {
+            console.log('');
             console.log("You Lose!");
             console.log('Please Try Again!');
+            console.log('');
         }
         if (this._win) {
-            console.log('Congratulation! You Win!');
+            console.log('');
+            console.log('----------------------------');
+            console.log('| Congratulation! You Win! |');
+            console.log('----------------------------');
+            console.log('');
         }
     }
 }

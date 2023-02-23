@@ -11,7 +11,8 @@
 Package prompt-sync is required. Run below command to install this package:
 
 ```bash
-npn i prompt-sync
+npm i prompt-sync
+npm i terminal-kit
 ```
 
 Run below command to start game:
@@ -31,10 +32,10 @@ node main.js
 
 ### Icon
 
-- ^ -> Hat
-- O -> Hole
-- ░ -> Field
-- \*  -> Current Place
+- \_A_ -> Hat
+- ( ) -> Hole
+- ‘   ’ -> Field
+- <\*>  -> Current Place
 
 ## Contributing
 
